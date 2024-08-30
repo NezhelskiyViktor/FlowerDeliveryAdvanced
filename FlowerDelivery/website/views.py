@@ -13,7 +13,7 @@ from .telebot.message_to_bot import send_message
 from .telegram_bot import send_initial_message
 from django.core.cache import cache
 
-TIME = (8, 23)  # время работы с 8:00 до 23:00
+TIME = (8, 20)  # время работы с 8:00 до 23:00
 IS_OPEN = False
 
 
