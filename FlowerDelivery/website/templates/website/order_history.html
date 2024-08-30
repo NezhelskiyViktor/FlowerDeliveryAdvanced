@@ -1,0 +1,89 @@
+{% extends 'website/home.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <h1 style="text-align: center; color: #a00;">{{ user }}, ваша история заказов
+            <a class="btn btn-success btn-lg" style="float: right;" href="{% url 'home' %}" role="button">Закрыть</a>
+        </h1>
+    <table class="table table-success table-striped" >
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Корзина</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Стоимость</th>
+                <th>Букет</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+            <td class="align-middle">{{ order.id }}</td>
+            <td class="align-middle">{{ order.cart }}</td>
+            <td class="align-middle">{{ order.order_date|date:"d.m.Y" }}</td>
+            <td class="align-middle">
+                {% if order.status == 'PAID' %}
+                    {{ order.get_status_display }}
+                {% else %}
+                    <select class="form-select status-select" name="status" data-order-id="{{ order.id }}">
+                        <option value="{{ order.status }}" selected>{{ order.get_status_display }}</option>
+                        {% for choice in order.USER_CHOICES %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+            </td>
+            <td class="align-middle">{{ order.cart_price }} руб.</td>
+            <td class="align-middle">
+                {% for item in order.cart.items.all %}
+                    {{ item.product.name }}: {{ item.quantity }} шт.,
+                {% endfor %}
+            </td>
+            <td>
+                <button class="btn btn-outline-primary" style="white-space:nowrap" type="submit" name="repeat" value="{{ order.id }}">
+                    Повторить заказ
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+</div>
+
+<script>
+document.querySelectorAll('.status-select').forEach(select => {
+    select.addEventListener('change', function() {
+        const orderId = this.getAttribute('data-order-id');
+        const newStatus = this.value;
+
+        fetch("{% url 'orders' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                order_id: orderId,
+                status: newStatus
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log('Статус обновлен:', data.new_status);
+            } else {
+                console.error('Ошибка обновления статуса');
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+    });
+});
+
+</script>
+{% endblock %}

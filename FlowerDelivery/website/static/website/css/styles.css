@@ -1,0 +1,105 @@
+body .home{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Занимает всю высоту окна браузера */
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    background-image: url('../fon_home_.jpg');
+}
+
+body .login-page{
+
+}
+
+.home-form {
+    max-width: 900px; /* Максимальная ширина формы */
+    width: 100%; /* Ширина формы 100% для меньших экранов */
+    background: #dfd;
+    padding: 20px; /* Отступы вокруг формы */
+    border-radius: 16px; /* Закругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота на весь экран */
+}
+
+.registration-form {
+    max-width: 600px; /* Максимальная ширина формы */
+    width: 100%; /* Ширина формы 100% для меньших экранов */
+    background: #dfd;
+    padding: 20px; /* Отступы вокруг формы */
+    border-radius: 16px; /* Закругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Отступ между группами полей */
+}
+
+.form-control {
+    width: 100%; /* Поля ввода занимают 100% ширины контейнера */
+}
+
+#id_address {
+    width: calc(100% + 32px); /* Увеличиваем ширину поля адреса на 32px (2*16px) для учета отступов */
+    margin-left: -16px; /* Сдвигаем влево, чтобы компенсировать увеличение ширины */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.card {
+    margin: 0;
+    width: 100%; /* Изображение занимает всю ширину карточки */
+    background: #dfd; /* Белый фон для формы */
+    border: 1px solid #ccc; /* Обводка карточки */
+    border-radius: 18px; /* Закругленные углы */
+}
+
+.card-img-top {
+    border-radius: 10px; /* Закругленные углы */
+    height: auto; /* Автоматическая высота */
+    padding: 15px; /* Отступы внутри карточки */
+}
+
+.card-body {
+    padding: 15px; /* Отступы внутри карточки */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #0f0 /* Укажите нужный цвет */
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+    justify-content: center; /* Центрирует карточки по горизонтали */
+}
+
+.table th, td {
+   border: 1px solid #000; /* Добавьте границы для ячеек */
+}
+
