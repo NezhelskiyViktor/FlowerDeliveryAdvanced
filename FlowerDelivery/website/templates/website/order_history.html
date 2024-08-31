@@ -5,9 +5,7 @@
 <div>
     <form method="post" class="mt-4">
         {% csrf_token %}
-        <h1 style="text-align: center; color: #a00;">{{ user }}, ваша история заказов
-            <a class="btn btn-success btn-lg" style="float: right;" href="{% url 'home' %}" role="button">Закрыть</a>
-        </h1>
+        <h3 style="text-align: center; color: #a00;">{{ user }}, ваша история заказов:</h3>
     <table class="table table-success table-striped" >
         <thead>
             <tr>
@@ -17,7 +15,9 @@
                 <th>Статус</th>
                 <th>Стоимость</th>
                 <th>Букет</th>
-                <th>Действие</th>
+                {% if is_open %}
+                    <th>Действие</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
             <td class="align-middle">{{ order.cart }}</td>
             <td class="align-middle">{{ order.order_date|date:"d.m.Y" }}</td>
             <td class="align-middle">
-                {% if order.status == 'PAID' %}
+                {% if order.status == 'PAID' or not is_open %}
                     {{ order.get_status_display }}
                 {% else %}
                     <select class="form-select status-select" name="status" data-order-id="{{ order.id }}">
@@ -44,11 +44,13 @@
                     {{ item.product.name }}: {{ item.quantity }} шт.,
                 {% endfor %}
             </td>
-            <td>
-                <button class="btn btn-outline-primary" style="white-space:nowrap" type="submit" name="repeat" value="{{ order.id }}">
-                    Повторить заказ
-                </button>
-            </td>
+            {% if is_open %}
+                <td>
+                    <button class="btn btn-outline-primary" style="white-space:nowrap" type="submit" name="repeat" value="{{ order.id }}">
+                        Повторить заказ
+                    </button>
+                </td>
+            {% endif %}
         </tr>
         {% endfor %}
         </tbody>

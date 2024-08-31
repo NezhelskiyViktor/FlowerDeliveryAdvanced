@@ -88,7 +88,7 @@ class OrderHistory(models.Model):
 
     cart = models.OneToOneField(Cart, verbose_name='Корзина', on_delete=models.CASCADE)
     order_date = models.DateTimeField(verbose_name='Дата заказа', auto_now_add=True)
-    cart_price = models.DecimalField(verbose_name='Стоит руб.', max_digits=10, decimal_places=2)
+    cart_price = models.DecimalField(verbose_name='Стоит ₽', max_digits=10, decimal_places=2)
     status = models.CharField(verbose_name='Статус', max_length=10, choices=STATUS_CHOICES, default='ORDERED')
 
     def __str__(self):

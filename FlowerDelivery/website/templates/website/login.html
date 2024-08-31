@@ -1,19 +1,69 @@
 {% extends 'website/home.html' %}
+{% load static %}
+
 {% block content %}
-<div class="container">
-    <div class="registration-form">
-        <h3 class="text-center">Вход на сайт</h3>
-        <form method="post" class="mt-4">
-            {% csrf_token %}
-            <div class="mb-1">
-                <label for="id_email">Ваша электронная почта?</label>
-                {{ form.email }}
-                {% if form.email.errors %}
-                    <div class="text-danger">{{ form.email.errors }}</div>
-                {% endif %}
-            </div>
-            <button type="submit" class="btn btn-primary">Войти</button>
-        </form>
+    <div class="container_login">
+        <div class="tabs">
+            <div class="tab active" id="loginTab">Вход</div>
+            <div class="tab" id="registerTab">Регистрация</div>
+        </div>
+        <div class="tab-content">
+            <div id="errorLogin" >{{ error_login }}</div>
+            <form id="loginForm" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required value="{{ email }}">
+                </div>
+                <button type="submit" name="login">Войти</button>
+            </form>
+
+            <form id="registerForm" class="hidden" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="registerName">Имя:</label>
+                    <input type="text" id="registerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Телефон:</label>
+                    <input type="text" id="registerPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerAddress">Адрес доставки:</label>
+                    <input type="text" id="registerAddress" name="delivery_address" required>
+                </div>
+                <button type="submit" name="register">Зарегистрироваться</button>
+            </form>
+        </div>
     </div>
-</div>
+
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const errorLogin = document.getElementById('errorLogin');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+            errorLogin.classList.remove('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+            errorLogin.classList.add('hidden');
+
+        });
+    </script>
 {% endblock %}

@@ -2,8 +2,8 @@ import asyncio
 from asgiref.sync import sync_to_async
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from .telebot.config import TOKEN
-from .models import BotConfig
+from .config import TOKEN
+from ..models import BotConfig
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):

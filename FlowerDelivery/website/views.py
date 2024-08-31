@@ -7,13 +7,12 @@ from django.views.decorators.cache import never_cache
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.http import JsonResponse
-from .forms import UserRegistrationForm, LoginForm, LoginByEmailForm, DeliveryAddressForm
-from .models import Customer, Product, Cart, CartItem, OrderHistory, BotConfig
-from .telebot.message_to_bot import send_message
-from .telegram_bot import send_initial_message
-from django.core.cache import cache
+from .forms import UserRegistrationForm, LoginForm
+from .models import Customer, Product, Cart, CartItem, OrderHistory
+from .telebot.telegram_bot import send_initial_message
 
-TIME = (8, 20)  # время работы с 8:00 до 23:00
+
+TIME = (8, 23)  # время работы с 8:00 до 23:00
 IS_OPEN = False
 
 
@@ -21,18 +20,22 @@ IS_OPEN = False
 @never_cache
 def home(request):
     global TIME
-    time_open = TIME[0]
-    time_close = TIME[1]
 
     local_time = timezone.now().astimezone(pytz.timezone('Europe/Moscow'))
 
     # Установим время начала и окончания работы
-    start_time = local_time.replace(hour=time_open, minute=0, second=0, microsecond=0)
-    end_time = local_time.replace(hour=time_close, minute=0, second=0, microsecond=0)
+    start_time = local_time.replace(hour=TIME[0], minute=0, second=0, microsecond=0)
+    end_time = local_time.replace(hour=TIME[1], minute=0, second=0, microsecond=0)
 
     global IS_OPEN
     IS_OPEN = start_time <= local_time <= end_time
-    # IS_OPEN = True
+
+    # Для отладки:
+    # IS_OPEN = False
+    # request.session.pop('email', None)
+    # request.session.pop('buyer', None)
+    # request.session.pop('selected_products', None)
+    # request.session.pop('cart_id', None)
 
     try:
         buyer = request.session['buyer']
@@ -49,45 +52,64 @@ def home(request):
         'user': buyer,
         'k_orders': k_orders,
         'current_time': local_time.strftime('%H:%M'),
-        'open': str(time_open),
-        'close': str(time_close),
-        'is_open': IS_OPEN  # Передаем информацию о доступности доставки
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+        'is_open': IS_OPEN
     }
-
     return render(request, 'website/home.html', context)
 
 
-# Функция для отображения страницы регистрации
-def register(request):
-    if request.method == 'POST':  # Обработка POST-запроса
-        form = UserRegistrationForm(request.POST)  # Инициализация формы
-        if form.is_valid():  # Проверка формы
-            form.save()  # Сохранение формы
-            request.session['email'] = form.cleaned_data['email']  # запомнить email в сессии
-            request.session['buyer'] = form.cleaned_data['name']  # запомнить имя пользователя в сессии
-
-            return redirect('home')  # Перенаправление на домашнюю страницу
-    else:
-        form = UserRegistrationForm()  # Инициализация формы
-    # Отображение формы
-    return render(request, 'website/register.html', {'form': form, 'is_open': IS_OPEN})
-
-
-# Функция для отображения страницы входа
 def login_view(request):
-    if request.method == 'POST':  # Обработка POST-запроса
-        form = LoginForm(request.POST)  # Инициализация формы
-        if form.is_valid():
-            email = form.cleaned_data['email']  # Получить email из формы
-            buyer = get_object_or_404(Customer, email=email)  # Поиск пользователя по email
-            request.session['email'] = email  # запомнить email в сессии
-            request.session['buyer'] = buyer.name  # запомнить имя пользователя в сессии
-            return redirect('home')  # Перенаправление на страницу каталога
-    else:
-        form = LoginForm()  # Инициализация формы
+    try:
+        email = request.session['email']
+        customer = get_object_or_404(Customer, email=email)  # Поиск пользователя по email
+    except KeyError:
+        customer = None
 
-    # Отображение формы
-    return render(request, 'website/login.html', {'form': form, 'is_open': IS_OPEN})
+    if customer:  # Если пользователь уже зарегистривовался
+        return redirect('showcase')
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+
+        if 'login' in request.POST:
+            # Обработка формы входа
+            try:
+                customer = get_object_or_404(Customer, email=email)  # Поиск пользователя по email
+                request.session['email'] = email  # запомнить email в сессии
+                request.session['buyer'] = customer.name  # запомнить имя пользователя в сессии
+                return redirect('showcase')  # переход на страницу витрины
+            except:  # Не удалось найти заказчика
+                content = {
+                    'open': str(TIME[0]),
+                    'close': str(TIME[1]),
+                    'email': email,
+                    'error_login': 'Пользователь с таким email не зарегистрирован.Пожалуйста зарегистрируйтесь.'
+                }
+                # Возвращаемся на страницу входа
+                return render(request, 'website/login.html', content)
+
+        elif 'register' in request.POST:
+            # Обработка формы регистрации
+            try:
+                customer = get_object_or_404(Customer, email=email)  # Поиск пользователя по email
+                request.session['email'] = email  # запомнить email в сессии
+                request.session['buyer'] = customer.name  # запомнить имя пользователя в сессии
+            except:
+                form = UserRegistrationForm(request.POST)
+                if form.is_valid():  # Проверка формы
+                    form.save()  # Сохранение формы
+                    request.session['email'] = form.cleaned_data['email']  # запомнить email в сессии
+                    request.session['buyer'] = form.cleaned_data['name']  # запомнить имя пользователя в сессии
+            return redirect('showcase')  # переход на страницу витрины
+
+    content = {
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+        'email': '',
+        'error_login': ''
+    }
+    return render(request, 'website/login.html', content)
 
 
 # Функция для выхода
@@ -146,7 +168,10 @@ def showcase(request):
 
     context = {
         'products': products,
-        'user': buyer
+        'user': buyer,
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+        'is_open': IS_OPEN
     }
     return render(request, 'website/showcase.html', context)
 
@@ -180,7 +205,12 @@ def cart(request):
         return redirect('orders')
 
     # Если request.method == 'GET' то
-    return render(request, 'website/cart.html', {'cart': carta})
+    context = {
+        'cart': carta,
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+    }
+    return render(request, 'website/cart.html', context)
 
 
 # Функция для авторизации Админа
@@ -260,12 +290,18 @@ def order_history(request):
                 update_order_status(request)
 
         # Если request.method == 'GET' то
-        context = {'orders': orders, 'user': buyer}
+        context = {
+            'orders': orders,
+            'user': buyer,
+            'open': str(TIME[0]),
+            'close': str(TIME[1]),
+            'is_open': IS_OPEN,
+        }
         return render(request, 'website/order_history.html', context)
     except KeyError:
         return redirect('login')
 
-
+# Функция для отображения страницы истории заказов Админу
 def home_admin(request):
     # Получаем все корзины
     carts = Cart.objects.all()
@@ -279,4 +315,13 @@ def home_admin(request):
 
     # Если это GET-запрос, рендерим шаблон
     return render(request, 'website/home_admin.html', {'orders': orders})
+
+
+# Страница О нашем сайте
+def about(request):
+    context = {
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+    }
+    return render(request, 'website/about.html', context)
 

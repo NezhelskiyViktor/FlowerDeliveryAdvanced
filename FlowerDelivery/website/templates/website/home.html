@@ -5,63 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'website/favicon.ico' %}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'website/css/styles.css' %}">
+<title>Служба доставки FlowerDelivery</title>
 
-    <title>Служба доставки цветов</title>
 </head>
 <body>
-    <main class="home">
-                {% block content %}
-        <div class="container">
-                    {% if is_open %}
-            <div class="home-form">
-                    {% else %}
-            <div class="home-form" style="background: #ddd;">
-                    {% endif %}
-                <form method="post" class="mt-4" style="color: #a00;">
-                    {% if is_open %}
-                        <h1>Добро пожаловать в службу доставки цветов!</h1>
-                        <p>Мы рады предложить вам широкий ассортимент свежих цветов и букетов для любого повода.</p>
-                    {% else %}
-                        <h1>Служба доставки цветов.</h1>
-                    {% endif %}
-                    {% if user is not None %}
-                        <p><strong>{{ user }}, вы вошли на сайт</strong></p>
-                        {% if k_orders > 0 %}
-                            <p><a href="{% url 'orders' %}"><strong>Ваша история заказов</strong></a></p>
-                        {% endif %}
-                        <p><a href="{% url 'showcase' %}"><strong>Сделайте выбор цветов на странице "Витрина" указав количество</strong></a></p>
-                        <p><a href="{% url 'logout' %}">Выход</a></p>
-                    {% else %}
-                        {% if is_open %}
-                            <p><a href="{% url 'login' %}">Для начала войдите на страницу "Вход"</a></p>
-                            <p><a href="{% url 'register' %}">или зарегистрируйтесь на странице "Регистация"</a></p>
-                        {% endif %}
-                        <p><a href="{% url 'showcase' %}">Посмотрите букеты на странице "Витрина"</a></p>
-                    {% endif %}
-                    <br>
-                    <h5> Служба доставки цветов работает с {{open}}:00 до {{close}}:00 (мск)</h5>
-                    <p>Сейчас <span id="current-time">{{ current_time }}</span></p></p>
-                </form>
+    <header>
+        <h1>Служба доставки цветов ``FlowerDelivery``</h1>
+        <p>Время раборы службы доставки цветов с {{open}}:00 до {{close}}:00 (мск)
+            [ Сейчас <span id="current-time">{{ current_time }}</span> ]</p>
+    </header>
+    <nav>
+        <a href="{% url 'home' %}">Главная</a>
+        <a href="{% url 'showcase' %}">Витрина цветов</a>
+        {% if user %}
+            <a href="{% url 'orders' %}">История заказов</a>
+        {% endif %}
+        <a href="{% url 'about' %}">Об этом сайте</a>
+    </nav>
+    <main>
+{% block content %}
+        <section class="hero">
+            <h2>Красивые цветы, доставленные с любовью</h2>
+            <p>
+                {% if user %}
+                    {{ user }}, у{% else %}У{% endif %}красьте чей-нибудь день нашими потрясающими цветочными композициями</p>
+            {% if is_open %}
+                <a href="{% url 'login' %}" class="cta-button">Перейти в магазин</a>
+            {% else %}
+                <a href="{% url 'showcase' %}" class="cta-button">Посмотреть витрину</a>
+            {% endif %}
+        </section>
+        <section class="features">
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <h3>Гарантия свежести</h3>
+                <p>Мы заботимся о том, чтобы наши цветы всегда были свежими и яркими</p>
             </div>
-        </div>
-        <script>
-            function updateTime() {
-                const now = new Date();
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
-                document.getElementById('current-time').textContent = `${hours}:${minutes}`;
-            }
-            setInterval(updateTime, 10000); // Обновление каждые 10 секунд
-            window.onload = updateTime; // Установка времени при загрузке страницы
-        </script>
-                {% endblock %}
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z"/>
+                </svg>
+                <h3>Быстрая доставка</h3>
+                <p>При местных заказах возможна доставка в тот же день</p>
+            </div>
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <h3>Индивидуальные договоренности</h3>
+                <p>Создайте свой идеальный букет с нашими опытными флористами</p>
+            </div>
+        </section>
+{% endblock %}
     </main>
-
-<!-- Подключение jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Подключение Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script></body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <footer>
+        <p>&copy; 2023 Служба доставки FlowerPower. Все права защищены.</p>
+    </footer>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateTime, 10000); // Обновление каждые 10 секунд
+        window.onload = updateTime; // Установка времени при загрузке страницы
+    </script>
+</body>
 </html>
