@@ -47,11 +47,10 @@
 - Проект реализоват под именем [FlowerDelivery](FlowerDelivery)
 - В проекте реализовано приложение [website](website/)
 - Взаимодействие с Telegram ботом организовано посредством отправления сообщений.
-Реализация взаимодействия находится в пакете [telebot](flower_delivery/Fdelivery/Ftelebot).
+Реализация взаимодействия находится в пакете [telebot](website/telebot).
 Там же находится файл config.py с заданным значением токена бота и его ID. 
-Для поиска ID от Telegram бота требуется выполнить поиск через API. См. [Адрес API для определения ID бота.txt](%C0%E4%F0%E5%F1%20API%20%E4%EB%FF%20%EE%EF%F0%E5%E4%E5%EB%E5%ED%E8%FF%20ID%20%E1%EE%F2%E0.txt)
 
-### Структура базы данных [models.py](flower_delivery/Fdelivery/Fmodels.py)
+### Структура базы данных [models.py](website/models.py)
 
 | Customer              'Заказчики'                  |
 |----------------------------------------------------|
