@@ -84,7 +84,7 @@ def login_view(request):
                     'open': str(TIME[0]),
                     'close': str(TIME[1]),
                     'email': email,
-                    'error_login': 'Пользователь с таким email не зарегистрирован.Пожалуйста зарегистрируйтесь.'
+                    'error_login': 'Пользователь с таким E-mail не зарегистрирован.Пожалуйста зарегистрируйтесь.'
                 }
                 # Возвращаемся на страницу входа
                 return render(request, 'website/login.html', content)

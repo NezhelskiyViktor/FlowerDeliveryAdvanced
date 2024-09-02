@@ -4,52 +4,49 @@
 {% block content %}
         <div class="about-section">
             <h2>Об этом сайте</h2>
-            <p>Welcome to FlowerPower, your premier flower delivery service! We've been spreading joy and beauty since 2005, delivering fresh, stunning floral arrangements to homes and businesses across the country.</p>
-            <p>At FlowerPower, we believe that flowers have the power to brighten anyone's day and make any occasion special. Our team of expert florists carefully selects the freshest blooms and creates stunning arrangements that are sure to impress.</p>
+            <p>Этот сайт создан для моего портфолио как итоговый проект в онлайн университете "Zerocoding".</p>
+            <p>Проект создан в рамках курса "Программист на Python с нуля с помощью ChatGPT".</p>
+            <p>В проекте реализован фукционал для работы с Телеграм ботом "@FlowerDeliverBot". Подключите бота
+            в Телеграм, начните с ним работать команой "/start" и сообщения с сайта будут приходить к вам в чат.</p>
+            <h2>Реализация интерфейса и работа сайта</h2>
+            <p>1. Сайт полноценно работает в указанное на домашней странице время.
+            В нерабочее время и без входа на сайт можно только посмотреть витрину.</p>
+            <p>2. В рабочее время можно зарегистрироваться указав свои данные в
+            форме регистрации. После регистрации можно войти в систему указав свою
+            почту (e-mial).</p>
+            <p>3. После входа в систему можно просматривать каталог цветов и делать заказ
+            указав под выбранным цветком нужное количество.</p>
+            <p>4. К оформлению заказа можно перейти по кнопке "Выбор сделан". Если сумма
+            заказа будет равна нулю, то заказ не будет оформлен и будет переход на
+            домашнюю страницу сайта.</p>
+            <p>5. Для оформления заказа требуется посмотреть данные заказа, изменить
+            адрес доставки, если не соответствует адресу доставки, указанному при
+            регистрации. А также здесь можно написать комментарий к заказу. После
+            этого можно по кнопке "Отправить заказ" завершить оформление заказа,
+            или вернуться к выбору цветов и переоформить заказ.</p>
+            <p>6. Отправка заказа происходит сразу после нажатия на кнопку "Отправить
+            заказ". После этого можно посмотреть его в истории заказов.</p>
+            <p>7. В истории заказов Заказчик может совершить повторный заказ ранее
+            выбранных заказов. А также изменить статус заказа, если он не отмечен
+            Админом как "Оплаченный". Заказчику не доступен статус "Оплаченный" из
+            выпадающего списка.</p>
+            <p>8. В приложении имеется страница "adminka" для входа в режим
+            Админа, который позволяет в истории заказов менять статусы заказов на
+            любые другие, включая "Оплачен".</p>
+            <p>9. В приложении имеется страница "admin" для входа в стандартный
+            для проектов Django режим администрирования для просмотра и изменения
+            данных в базе данных проекта.</p>
+            <p>10. Для проекта "FlowerDelivery" в приложении имеется возможность
+            отправлять сообщения боту в Telegram о поступивших заказах и изменении
+            статуса заказа.</p>
+            <p>11. Для этого необходимо найти в программе Telegram бота "Менеджер
+            доставщик" (@FlowerDeliverBot) или перейти по ссылке
+            "https://t.me/FlowerDeliverBot". После этого в нижней части страницы
+            программы нажать на кнопку "Начать" или написать команду "/start".
+            В ответ на это с сервера поступит собщение "Сообщения с сайта будут
+            приходить сюда." и в базе данных будет создана запись с номером сессии
+            бота пользователя службы доставки. Чтобы сменить пользователя службы
+            доставки, нужно написать команду "/start" на другом устройстве в
+            Telegram.</p>
         </div>
-        <div class="about-section">
-            <h3>Our Mission</h3>
-            <p>Our mission is to bring the beauty of nature into people's lives through our carefully crafted floral arrangements. We strive to provide exceptional customer service, timely deliveries, and flowers that exceed expectations.</p>
-        </div>
-        <div class="about-section">
-            <h3>Meet Our Team</h3>
-            <div class="team-member">
-                <img src="https://example.com/sarah.jpg" alt="Sarah Johnson, Founder and Head Florist" width="80" height="80">
-                <div>
-                    <h4>Sarah Johnson</h4>
-                    <p>Founder and Head Florist</p>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://example.com/michael.jpg" alt="Michael Chen, Operations Manager" width="80" height="80">
-                <div>
-                    <h4>Michael Chen</h4>
-                    <p>Operations Manager</p>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://example.com/emily.jpg" alt="Emily Rodriguez, Customer Service Lead" width="80" height="80">
-                <div>
-                    <h4>Emily Rodriguez</h4>
-                    <p>Customer Service Lead</p>
-                </div>
-            </div>
-        </div>
-        <div class="about-section">
-            <h3>Our Commitment to Sustainability</h3>
-            <p>At FlowerPower, we're committed to sustainable practices. We source our flowers from eco-friendly farms, use biodegradable packaging, and continuously work to reduce our carbon footprint.</p>
-        </div>
-    <script>
-        // Add a simple animation to team member images on hover
-        const teamMembers = document.querySelectorAll('.team-member img');
-        teamMembers.forEach(member => {
-            member.addEventListener('mouseenter', function() {
-                this.style.transition = 'transform 0.3s ease';
-                this.style.transform = 'scale(1.1)';
-            });
-            member.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-    </script>
 {% endblock %}

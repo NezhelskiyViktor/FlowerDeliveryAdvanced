@@ -201,11 +201,11 @@ body .login-page{
         }
     }
     footer {
-        background-color: #333;
+        background-color: #355;
         color: white;
         text-align: center;
-        padding: 1rem;
-        margin-top: 2rem;
+        padding: 3px;
+        margin-top: 3px;
     }
 
 .container_login {
