@@ -1,0 +1,473 @@
+:root {
+    --light-green: #e8f5e9;
+    --medium-green: #81c784;
+    --dark-green: #2e7d32;
+    --accent-green: #4caf50;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-green);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body .login-page{
+
+}
+
+.home-form {
+    max-width: 900px; /* Максимальная ширина формы */
+    width: 100%; /* Ширина формы 100% для меньших экранов */
+    background: #dfd;
+    padding: 20px; /* Отступы вокруг формы */
+    border-radius: 16px; /* Закругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота на весь экран */
+}
+
+.registration-form {
+    max-width: 600px; /* Максимальная ширина формы */
+    width: 100%; /* Ширина формы 100% для меньших экранов */
+    background: #dfd;
+    padding: 20px; /* Отступы вокруг формы */
+    border-radius: 16px; /* Закругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: center;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+.form-group {
+    margin-bottom: 0px; /* Отступ между группами полей */
+    padding: 8px;
+}
+
+.form-control {
+    width: 100%; /* Поля ввода занимают 100% ширины контейнера */
+}
+
+#id_address {
+    width: calc(100% + 32px); /* Увеличиваем ширину поля адреса на 32px (2*16px) для учета отступов */
+    margin-left: -16px; /* Сдвигаем влево, чтобы компенсировать увеличение ширины */
+}
+
+#id_comment {
+    width: calc(100% + 32px); /* Увеличиваем ширину поля адреса на 32px (2*16px) для учета отступов */
+    margin-left: -16px; /* Сдвигаем влево, чтобы компенсировать увеличение ширины */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.card {
+    margin: 0;
+    width: 100%; /* Изображение занимает всю ширину карточки */
+    background: #dfd; /* Белый фон для формы */
+    border: 1px solid #ccc; /* Обводка карточки */
+    border-radius: 18px; /* Закругленные углы */
+}
+
+.card-img-top {
+    border-radius: 10px; /* Закругленные углы */
+    height: auto; /* Автоматическая высота */
+    padding: 15px; /* Отступы внутри карточки */
+}
+
+.card-body {
+    padding: 15px; /* Отступы внутри карточки */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #0f0 /* Укажите нужный цвет */
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+    justify-content: center; /* Центрирует карточки по горизонтали */
+}
+
+.table th, td {
+   border: 1px solid #000; /* Добавьте границы для ячеек */
+}
+
+    header {
+        background-color: var(--medium-green);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--dark-green);
+        padding: 0.5rem;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s;
+    }
+    nav a:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        flex: 1; /* Позволяет main занимать доступное пространство */
+        padding: 20px; /* Добавляем отступы для главного содержимого */
+    }
+
+    .hero {
+        background: linear-gradient(rgba(129, 199, 132,0.7), rgba(46, 125, 50,0.7)), url('../img/Астры.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 4rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero_order {
+        background: linear-gradient(rgba(129, 199, 132,0.7), rgba(46, 125, 50,0.7)), url('../img/Пион.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: #fff;
+        color: var(--dark-green);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .features {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .feature {
+        flex-basis: calc(33.333% - 6rem);
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .feature svg {
+        width: 50px;
+        height: 50px;
+        fill: var(--dark-green);
+        margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+        .feature {
+            flex-basis: 100%;
+        }
+    }
+    footer {
+        background-color: #355;
+        color: white;
+        text-align: center;
+        padding: 3px;
+        margin-top: 3px;
+    }
+
+.container_login {
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 700px;
+    height: 65vh; /* Высота на весь экран */
+    max-width: 90%;
+    min-height: 460px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container_cart {
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 700px;
+    max-width: 90%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    background-color: var(--medium-green);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.tab.active {
+    background-color: var(--dark-green);
+}
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-green);
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--medium-green);
+    border-radius: 5px;
+    font-size: 16px;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--dark-green);
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+}
+button {
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--dark-green);
+}
+
+.button-container {
+    text-align: center;
+}
+
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+.social-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+.social-btn:hover {
+    opacity: 0.8;
+}
+.facebook {
+    background-color: #3b5998;
+}
+.google {
+    background-color: #db4437;
+}
+.hidden {
+    display: none;
+}
+    header {
+        background-color: var(--dark-green);
+        color: white;
+        padding: 1rem;
+        text-align: center;
+    }
+    nav {
+        background-color: var(--medium-green);
+        padding: 0.5rem;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 0 1rem;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .product-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+    .product-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .product-info {
+        padding: 1rem;
+    }
+    .product-title {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .product-price {
+        color: var(--dark-green);
+        font-weight: bold;
+    }
+    .auth-forms {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+    .auth-form {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        width: 45%;
+    }
+    .auth-form h2 {
+        margin-top: 0;
+        color: var(--dark-green);
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid var(--medium-green);
+        border-radius: 4px;
+    }
+    button {
+        background-color: var(--dark-green);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .reviews {
+        margin-top: 2rem;
+    }
+    .review {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .review-author {
+        font-weight: bold;
+        color: var(--dark-green);
+    }
+
+    .about-section {
+        margin-bottom: 2rem;
+    }
+
+    .about-section h2{
+        color: var(--dark-green);
+        border-bottom: 2px solid var(--dark-green);
+        padding-bottom: 0.5rem;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределение элементов внутри формы */
+}
+
+
+@media (max-width: 600px) {
+    /* Дополнительные стили для маленьких экранов */
+    .container_login {
+        padding: 10px; /* Уменьшение отступов для маленьких экранов */
+    }
+
+    form {
+        min-height: 200px; /* Уменьшение минимальной высоты для маленьких экранов */
+    }
+}

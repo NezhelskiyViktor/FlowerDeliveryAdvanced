@@ -1,0 +1,50 @@
+Протокол запуска:
+root@clzfdkfawq:~/FlowerDelivery# python3 -m venv venv
+root@clzfdkfawq:~/FlowerDelivery# source venv/bin/activate
+(venv) root@clzfdkfawq:~/FlowerDelivery# python3 manage.py runserver 0.0.0.0:8000
+
+INFO Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 03, 2024 - 21:05:28
+Django version 5.1.1, using settings 'FlowerDelivery.settings'
+Starting development server at http://0.0.0.0:8000/
+===================================================
+Чтобы перейти в виртуальное окружение, вам нужно сначала его создать (если вы этого еще не сделали), а затем активировать. Вот шаги, которые вы можете выполнить:
+### 1. Создание виртуального окружения
+Если у вас еще нет виртуального окружения, создайте его с помощью следующей команды. 
+```bash
+python3 -m venv venv
+```
+
+### 2. Активация виртуального окружения
+После создания виртуального окружения вам нужно его активировать.
+- **На Windows:**
+```bash
+venv\Scripts\activate
+```
+
+- **На macOS и Linux:**
+```bash
+source venv/bin/activate
+```
+
+### 3. Проверка активации
+После активации виртуального окружения вы должны увидеть имя вашего окружения в начале командной строки. Например:
+```
+(venv) root@45.146.167.236:~/path/to/your/project$
+```
+
+### 4. Установка необходимых пакетов
+Теперь, когда виртуальное окружение активно, вы можете устанавливать необходимые пакеты, такие как Pillow:
+```bash
+pip install Pillow
+```
+
+### 5. Деактивация виртуального окружения
+Когда вы закончите работу и хотите выйти из виртуального окружения, просто выполните команду:
+```bash
+deactivate
+```
+После этого вы вернетесь к глобальной среде Python.

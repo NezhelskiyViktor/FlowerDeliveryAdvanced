@@ -2,40 +2,31 @@
 {% load static %}
 
 {% block content %}
-<div class="container_login">
-    <div class="tab-content">
-        <form id="loginForm" method="POST">
-            {% csrf_token %}
-            <div style="background: linear-gradient(rgba(129, 199, 132,0.7), rgba(46, 125, 50,0.7)), url('{{ cart.items.first.product.image.url}}');
-                        background-size: cover;
-                        background-position: center;
-                        color: white;
-                        text-align: center;" >
-                <h2>Оформление заказа</h2>
-                <h3>Корзина {{ cart }}</h3>
-                <h4>
-                {% for item in cart.items.all %}
-                    {{ item.product.name }}: {{ item.quantity }} шт.,
-                {% endfor %}
-                </h4>
-                <h4>Стоимость: {{ cart.total_price }} руб.</h4>
-                <p>Дата заказа: {{ cart.created_at }}</p>
-            </div>
-            <div class="form-group">
-                <label for="id_address">Адрес доставки:</label>
-                <input type="text" name="delivery_address" id="id_address" class="form-control"
-                       value="{{ cart.customer.delivery_address }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="id_comment">Комментарий:</label>
-                <textarea name="comment" id="id_comment" class="form-control"></textarea>
-            </div>
-            <div>
-                <p><button type="submit" class="btn btn-primary">Отправить заказ</button></p>
-                <p><a class="btn btn-success"  href="{% url 'showcase' %}">Вернуться в каталог</a></p>
-            </div>
-        </form>
+<div class="container_cart">
+    <div class="tab-content" style="background: linear-gradient(rgba(129, 199, 132,0.7), rgba(46, 125, 50,0.7)), url('{{ cart.items.first.product.image.url}}');">
+        <h2>Оформление заказа</h2>
+        <h3>Корзина {{ cart }}</h3>
+        <h4>
+        {% for item in cart.items.all %}
+            {{ item.product.name }}: {{ item.quantity }} шт.,
+        {% endfor %}
+        </h4>
+        <h4>Стоимость: {{ cart.total_price }} руб.</h4>
+        <p>Дата заказа: {{ cart.created_at }}</p>
     </div>
 </div>
+<form id="loginForm" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_address">Адрес доставки:</label>
+        <input type="text" name="delivery_address" id="id_address"
+               value="{{ cart.customer.delivery_address }}" required>
+        <label for="id_comment">Комментарий:</label>
+        <textarea name="comment" id="id_comment" class="form-control"></textarea>
+    </div>
+        <div class="button-container">
+            <p><button type="submit" class="btn btn-primary">Отправить заказ</button></p>
+            <p><a class="btn btn-success" href="{% url 'showcase' %}">Вернуться в каталог</a></p>
+        </div>
+</form>
 {% endblock %}

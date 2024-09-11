@@ -10,6 +10,9 @@ body {
     padding: 0;
     background-color: var(--light-green);
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body .login-page{
@@ -49,7 +52,8 @@ body .login-page{
 }
 
 .form-group {
-    margin-bottom: 15px; /* Отступ между группами полей */
+    margin-bottom: 0px; /* Отступ между группами полей */
+    padding: 8px;
 }
 
 .form-control {
@@ -136,6 +140,8 @@ body .login-page{
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
+        flex: 1; /* Позволяет main занимать доступное пространство */
+        padding: 20px; /* Добавляем отступы для главного содержимого */
     }
 
     .hero {
@@ -195,11 +201,7 @@ body .login-page{
         fill: var(--dark-green);
         margin-bottom: 1rem;
     }
-    @media (max-width: 768px) {
-        .feature {
-            flex-basis: 100%;
-        }
-    }
+
     footer {
         background-color: #355;
         color: white;
@@ -209,18 +211,35 @@ body .login-page{
     }
 
 .container_login {
-    margin: 0 auto;
+    margin: auto;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 800px;
+    width: 700px;
     height: 65vh; /* Высота на весь экран */
     max-width: 90%;
+    min-height: 460px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
+
+.container_cart {
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 700px;
+    max-width: 90%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .tabs {
     display: flex;
 }
+
 .tab {
     flex: 1;
     text-align: center;
@@ -235,11 +254,14 @@ body .login-page{
     background-color: var(--dark-green);
 }
 .tab-content {
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
 }
-.form-group {
-    margin-bottom: 20px;
-}
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -267,9 +289,15 @@ button {
     font-size: 16px;
     transition: background-color 0.3s;
 }
+
 button:hover {
     background-color: var(--dark-green);
 }
+
+.button-container {
+    text-align: center;
+}
+
 .social-login {
     margin-top: 20px;
     text-align: center;
@@ -372,9 +400,6 @@ button:hover {
         margin-top: 0;
         color: var(--dark-green);
     }
-    .form-group {
-        margin-bottom: 1rem;
-    }
     .form-group label {
         display: block;
         margin-bottom: 0.5rem;
@@ -424,3 +449,10 @@ button:hover {
         border-radius: 10px;
         margin-bottom: 1rem;
     }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределение элементов внутри формы */
+}
+
