@@ -1,6 +1,6 @@
 import asyncio
 from asgiref.sync import sync_to_async
-from telegram import Update
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from .config import TOKEN
 from ..models import BotConfig
@@ -10,11 +10,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bot_id = update.effective_chat.id  # Получаем chat_id
     print(f'Подключился пользователь с ID: {bot_id}')  # Выводим chat_id в консоль
     await update.message.reply_text('Сообщения с сайта будут приходить сюда.')
+    # Создаем клавиатуру с кнопкой "Административная"
+    keyboard = [
+        [InlineKeyboardButton("Административная", url="https://miponcelbon.beget.app/home_admin/")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
     # Сохраняем ID бота в базу данных асинхронно
     await sync_to_async(BotConfig.objects.update_or_create)(
         id=1, defaults={'bot_id': bot_id}
     )
-
+    await update.message.reply_text(
+        'Cтатусами заказа можно управлять на сайте.\nНажмите на кнопку ниже:',
+        reply_markup=reply_markup)
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('?')
