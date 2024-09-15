@@ -9,6 +9,5 @@ urlpatterns = [
     path('showcase/', views.showcase, name='showcase'),  # Страница витрины/каталога для заказчиков
     path('cart/', views.cart, name='cart'),  # Страница корзины для заказа
     path('orders/', views.order_history, name='orders'),  # Страница истории заказов
-    path('adminka/', views.login_admin, name='adminka'),  # Страница входа администратора
     path('home_admin/', views.home_admin, name='home_admin'),  # Страница администратора
 ]

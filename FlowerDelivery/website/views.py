@@ -241,7 +241,7 @@ def update_order_status(request):
         order.status = new_status  # Предполагается, что status является полем модели
         order.save()
         text = f'\nСтатус заказа №{order_id} изменен на {order.get_status_display()}.'
-        # send_message(text)
+        print(text)
         asyncio.run(send_initial_message(text))
         # Возвращаем успешный ответ
         return JsonResponse({'status': 'success', 'new_status': order.get_status_display()})
@@ -318,8 +318,6 @@ def home_admin(request):
     context = {
         'orders': orders,
         'user': 'admin',
-        'open': str(TIME[0]),
-        'close': str(TIME[1]),
         'is_open': True,
     }
     return render(request, 'website/order_history.html', context)

@@ -74,33 +74,36 @@
 </div>
 
 <script>
-document.querySelectorAll('.status-select').forEach(select => {
-    select.addEventListener('change', function() {
-        const orderId = this.getAttribute('data-order-id');
-        const newStatus = this.value;
+    const user = '{{ user }}';
+    document.querySelectorAll('.status-select').forEach(select => {
+        select.addEventListener('change', function() {
+            const orderId = this.getAttribute('data-order-id');
+            const newStatus = this.value;
 
-        fetch("{% url 'orders' %}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: JSON.stringify({
-                order_id: orderId,
-                status: newStatus
+            // Определяем URL в зависимости от значения user
+            const url = user === "admin" ? "{% url 'home_admin' %}" : "{% url 'orders' %}";
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    order_id: orderId,
+                    status: newStatus
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log('Статус обновлен:', data.new_status);
-            } else {
-                console.error('Ошибка обновления статуса');
-            }
-        })
-        .catch(error => console.error('Ошибка:', error));
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('Статус обновлен:', data.new_status);
+                } else {
+                    console.error('Ошибка обновления статуса');
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
     });
-});
-
 </script>
 {% endblock %}
