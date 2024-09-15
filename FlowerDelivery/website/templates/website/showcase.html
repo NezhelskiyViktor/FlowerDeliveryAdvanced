@@ -3,37 +3,35 @@
 
 {% block content %}
     <form id="order-form" method="POST" action="{% url 'showcase' %}" autocomplete="off">
-        <main>
-            <section id="catalog">
-                {% if user and is_open %}
-                    <h2 style="text-align: center; color: #a00;">{{ user }}, укажите количество для букета:
-                        <button class="btn btn-success" style="float: right;" type="submit">Выбор сделан</button>
-                    </h2>
-                    <br>
-                {% else %}
-                    <h2 style="text-align: center; color: #a00;">Витрина</h2>
-                {% endif %}
-                {% csrf_token %}
-                <div class="product-grid">
-                    {% for product in products %}
-                        <div class="product-card">
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="250" height="250">
-                            <div class="product-info">
-                                <div class="product-title">{{ product.name }}</div>
-                                <div class="product-price">{{ product.price }} ₽</div>
-                                {% if user and is_open %}
-                                <div class="product-price">
-                                    <label for="count_{{ product.id }}">Кол. для букета:</label>
-                                    <input style="color: #a00;" type="number" id="count_{{ product.id }}" name="product_counts[{{ product.id }}]" min="1" max="100"  placeholder="0" width="10px">
-                                    шт.
-                                </div>
-                                {% endif %}
+        <section id="catalog">
+            {% if user and is_open %}
+                <h2 style="text-align: center; color: #a00;">{{ user }}, укажите количество для букета:
+                    <button class="btn btn-success" style="float: right;" type="submit">Выбор сделан</button>
+                </h2>
+                <br>
+            {% else %}
+                <h2 style="text-align: center; color: #a00;">Витрина наших цветов и букетов для наших заказчиков:</h2>
+            {% endif %}
+            {% csrf_token %}
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="250" height="250">
+                        <div class="product-info">
+                            <div class="product-title">{{ product.name }}</div>
+                            <div class="product-price">{{ product.price }} ₽</div>
+                            {% if user and is_open %}
+                            <div class="product-price">
+                                <label for="count_{{ product.id }}">Кол. для букета:</label>
+                                <input style="color: #a00;" type="number" id="count_{{ product.id }}" name="product_counts[{{ product.id }}]" min="1" max="100"  placeholder="0" width="10px">
+                                шт.
                             </div>
+                            {% endif %}
                         </div>
-                    {% endfor %}
-                </div>
-            </section>
-        </main>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
     </form>
 <script>
     window.onload = function() {

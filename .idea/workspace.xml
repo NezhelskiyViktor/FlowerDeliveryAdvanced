@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f8bf8f5-a389-4c7b-bd6e-55288fd8605b" name="Changes" comment="Commit N3 Новая редакция сайта">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/telebot/telegram_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/telebot/telegram_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/home_admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/login_admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/order_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/order_history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/showcase.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/showcase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

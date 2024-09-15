@@ -301,6 +301,7 @@ def order_history(request):
     except KeyError:
         return redirect('login')
 
+
 # Функция для отображения страницы истории заказов Админу
 def home_admin(request):
     # Получаем все корзины
@@ -314,7 +315,14 @@ def home_admin(request):
         update_order_status(request)
 
     # Если это GET-запрос, рендерим шаблон
-    return render(request, 'website/home_admin.html', {'orders': orders})
+    context = {
+        'orders': orders,
+        'user': 'admin',
+        'open': str(TIME[0]),
+        'close': str(TIME[1]),
+        'is_open': True,
+    }
+    return render(request, 'website/order_history.html', context)
 
 
 # Страница О нашем сайте

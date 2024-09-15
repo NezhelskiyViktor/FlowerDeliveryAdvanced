@@ -14,20 +14,25 @@
 
 </head>
 <body>
-    <header>
-        <h1>Служба доставки цветов ``FlowerDelivery``</h1>
-        <p>Время раборы службы доставки цветов с {{open}}:00 до {{close}}:00 (мск)
-            [ Сейчас <span id="current-time">{{ current_time }}</span> ]</p>
-        <h6 style="font-size: 0.8em;">Учебный проект по Django и Telegram-bot для моего портфолио (Нежельский В.А.)</h6>
-    </header>
-    <nav>
-        <a href="{% url 'home' %}">Главная</a>
-        <a href="{% url 'showcase' %}">Витрина цветов</a>
-        {% if user %}
-            <a href="{% url 'orders' %}">История заказов</a>
-        {% endif %}
-        <a href="{% url 'about' %}">Об этом сайте</a>
-    </nav>
+    {% if user != "admin" %}
+        <header>
+            <h1>Служба доставки цветов ``FlowerDelivery``</h1>
+            <p>Время раборы службы доставки цветов с {{open}}:00 до {{close}}:00 (мск)
+                [ Сейчас <span id="current-time">{{ current_time }}</span> ]</p>
+            <h6 style="font-size: 0.8em;">Учебный проект по Django и Telegram-bot для моего портфолио (Нежельский В.А.)</h6>
+        </header>
+        <nav>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'showcase' %}">Витрина цветов</a>
+            {% if user %}
+                <a href="{% url 'orders' %}">История заказов</a>
+                <a href="{% url 'logout' %}">Выход</a>
+            {% else %}
+                <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
+            <a href="{% url 'about' %}">Об этом сайте</a>
+        </nav>
+    {% endif %}
     <main>
 {% block content %}
         <section class="hero">

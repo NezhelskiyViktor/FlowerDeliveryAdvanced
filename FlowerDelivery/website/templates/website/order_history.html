@@ -5,56 +5,71 @@
 <div>
     <form method="post" class="mt-4">
         {% csrf_token %}
-        <h3 style="text-align: center; color: #a00;">{{ user }}, ваша история заказов:</h3>
-    <table class="table table-success table-striped" >
-        <thead>
+        {% if user == "admin" %}
+            <h1 style="text-align: center; color: #a00;">Заказы</h1>
+        {% else %}
+            <h3 style="text-align: center; color: #a00;">{{ user }}, ваша история заказов:</h3>
+        {% endif %}
+        <table class="table table-success table-striped" >
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Корзина</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    <th>Стоимость</th>
+                    <th>Букет</th>
+                    {% if is_open and user != "admin" %}
+                        <th>Действие</th>
+                    {% else %}
+                        <th>Заказчик</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
             <tr>
-                <th>№</th>
-                <th>Корзина</th>
-                <th>Дата</th>
-                <th>Статус</th>
-                <th>Стоимость</th>
-                <th>Букет</th>
-                {% if is_open %}
-                    <th>Действие</th>
+                <td class="align-middle">{{ order.id }}</td>
+                <td class="align-middle">{{ order.cart }}</td>
+                <td class="align-middle">{{ order.order_date|date:"d.m.Y" }}</td>
+                <td class="align-middle">
+                    {% if user != "admin" and order.status == 'PAID' or not is_open %}
+                        {{ order.get_status_display }}
+                    {% else %}
+                        <select class="form-select status-select" name="status" data-order-id="{{ order.id }}" style="width: 120px;">
+                            <option value="{{ order.status }}" selected>{{ order.get_status_display }}</option>
+                            {% if user == "admin" %}
+                                {% for choice in order.STATUS_CHOICES %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                {% endfor %}
+                            {% else %}
+                                {% for choice in order.USER_CHOICES %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    {% endif %}
+                </td>
+                <td class="align-middle">{{ order.cart_price }} руб.</td>
+                <td class="align-middle">
+                    {% for item in order.cart.items.all %}
+                        {{ item.product.name }}: {{ item.quantity }} шт.,
+                    {% endfor %}
+                </td>
+                {% if is_open and user != "admin" %}
+                    <td>
+                        <button class="btn btn-outline-primary" style="white-space:nowrap" type="submit" name="repeat" value="{{ order.id }}">
+                            Повторить заказ
+                        </button>
+                    </td>
+                {% endif %}
+                {% if user == "admin" %}
+                    <td class="align-middle" style="white-space:nowrap">{{ order.cart.customer.name  }}</td>
                 {% endif %}
             </tr>
-        </thead>
-        <tbody>
-        {% for order in orders %}
-        <tr>
-            <td class="align-middle">{{ order.id }}</td>
-            <td class="align-middle">{{ order.cart }}</td>
-            <td class="align-middle">{{ order.order_date|date:"d.m.Y" }}</td>
-            <td class="align-middle">
-                {% if order.status == 'PAID' or not is_open %}
-                    {{ order.get_status_display }}
-                {% else %}
-                    <select class="form-select status-select" name="status" data-order-id="{{ order.id }}">
-                        <option value="{{ order.status }}" selected>{{ order.get_status_display }}</option>
-                        {% for choice in order.USER_CHOICES %}
-                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                        {% endfor %}
-                    </select>
-                {% endif %}
-            </td>
-            <td class="align-middle">{{ order.cart_price }} руб.</td>
-            <td class="align-middle">
-                {% for item in order.cart.items.all %}
-                    {{ item.product.name }}: {{ item.quantity }} шт.,
-                {% endfor %}
-            </td>
-            {% if is_open %}
-                <td>
-                    <button class="btn btn-outline-primary" style="white-space:nowrap" type="submit" name="repeat" value="{{ order.id }}">
-                        Повторить заказ
-                    </button>
-                </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% endfor %}
+            </tbody>
+        </table>
     </form>
 </div>
 
