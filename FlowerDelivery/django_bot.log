@@ -1,0 +1,72 @@
+INFO 2024-09-15 11:09:15,551 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85276
+INFO 2024-09-15 11:09:23,466 basehttp "POST /website/orders/ HTTP/1.1" 302 0
+INFO 2024-09-15 11:09:23,471 basehttp "GET /website/login/ HTTP/1.1" 200 4949
+INFO 2024-09-15 11:09:57,346 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85276
+INFO 2024-09-15 11:11:19,220 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\views.py changed, reloading.
+INFO 2024-09-15 11:11:19,817 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:11:33,005 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85276
+INFO 2024-09-15 11:11:35,667 basehttp "POST /website/orders/ HTTP/1.1" 302 0
+INFO 2024-09-15 11:11:35,673 basehttp "GET /website/login/ HTTP/1.1" 200 4949
+INFO 2024-09-15 11:13:49,830 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\views.py changed, reloading.
+INFO 2024-09-15 11:13:50,427 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:13:58,387 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85276
+INFO 2024-09-15 11:13:58,542 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:13:58,603 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:14:04,634 basehttp "POST /website/orders/ HTTP/1.1" 302 0
+INFO 2024-09-15 11:14:04,640 basehttp "GET /website/login/ HTTP/1.1" 200 4949
+INFO 2024-09-15 11:16:49,193 basehttp "POST /website/orders/ HTTP/1.1" 200 5298
+INFO 2024-09-15 11:20:55,789 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\urls.py changed, reloading.
+INFO 2024-09-15 11:20:56,414 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:40:42,923 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\views.py changed, reloading.
+INFO 2024-09-15 11:40:43,602 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:40:48,968 basehttp "GET /website/orders/ HTTP/1.1" 200 5302
+INFO 2024-09-15 11:40:49,090 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:40:49,719 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:41:16,405 basehttp "GET /website/orders/ HTTP/1.1" 200 5302
+INFO 2024-09-15 11:41:16,425 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:41:16,913 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:41:39,040 basehttp "GET /website/orders/ HTTP/1.1" 200 5298
+INFO 2024-09-15 11:41:39,058 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:41:40,106 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:41:42,357 basehttp "GET /website/orders/ HTTP/1.1" 200 5298
+INFO 2024-09-15 11:41:42,374 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:41:42,703 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:41:46,578 basehttp "GET /website/ HTTP/1.1" 200 4309
+INFO 2024-09-15 11:41:48,910 basehttp "GET /website/orders/ HTTP/1.1" 200 7172
+INFO 2024-09-15 11:42:05,800 basehttp "POST /website/orders/ HTTP/1.1" 200 7173
+INFO 2024-09-15 11:43:03,904 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85276
+INFO 2024-09-15 11:43:09,349 basehttp "POST /website/orders/ HTTP/1.1" 302 0
+INFO 2024-09-15 11:43:09,367 basehttp "GET /website/login/ HTTP/1.1" 200 4949
+INFO 2024-09-15 11:44:55,790 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85280
+INFO 2024-09-15 11:44:55,839 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:44:56,588 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:45:04,171 basehttp "POST /website/home_admin/ HTTP/1.1" 200 85277
+INFO 2024-09-15 11:46:20,558 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\views.py changed, reloading.
+INFO 2024-09-15 11:46:21,131 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:46:45,288 basehttp "POST /website/home_admin/ HTTP/1.1" 200 85280
+INFO 2024-09-15 11:49:20,983 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\views.py changed, reloading.
+INFO 2024-09-15 11:49:21,647 autoreload Watching for file changes with StatReloader
+INFO 2024-09-15 11:58:28,515 basehttp "POST /website/home_admin/ HTTP/1.1" 200 85569
+INFO 2024-09-15 11:58:36,378 basehttp "GET /website/orders/ HTTP/1.1" 200 5614
+INFO 2024-09-15 11:58:39,440 basehttp "GET /website/orders/ HTTP/1.1" 200 5614
+INFO 2024-09-15 11:58:39,562 basehttp "GET /static/website/css/styles.css HTTP/1.1" 200 11891
+INFO 2024-09-15 11:58:39,936 basehttp "GET /static/website/favicon.ico HTTP/1.1" 200 41662
+INFO 2024-09-15 11:58:47,591 basehttp "GET /website/ HTTP/1.1" 200 4309
+INFO 2024-09-15 11:58:49,133 basehttp "GET /website/orders/ HTTP/1.1" 200 6843
+INFO 2024-09-15 11:58:59,362 basehttp "POST /website/orders/ HTTP/1.1" 200 6842
+INFO 2024-09-15 11:59:15,516 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85568
+INFO 2024-09-15 12:00:20,942 basehttp "GET /website/ HTTP/1.1" 200 4309
+INFO 2024-09-15 12:00:24,935 basehttp "GET /website/orders/ HTTP/1.1" 200 6842
+INFO 2024-09-15 12:01:54,018 basehttp "GET /website/ HTTP/1.1" 200 4309
+INFO 2024-09-15 12:13:19,613 basehttp "GET /website/home_admin/ HTTP/1.1" 200 85568
+INFO 2024-09-15 12:14:25,394 basehttp "GET /website/about/ HTTP/1.1" 200 7688
+INFO 2024-09-15 12:27:14,169 basehttp "GET /website/about/ HTTP/1.1" 200 8812
+INFO 2024-09-15 12:28:32,067 basehttp "GET /website/about/ HTTP/1.1" 200 8813
+INFO 2024-09-15 12:33:17,702 basehttp "GET /website/about/ HTTP/1.1" 200 8821
+INFO 2024-09-15 12:34:33,625 basehttp "GET /website/orders/ HTTP/1.1" 200 6842
+INFO 2024-09-15 12:34:38,310 basehttp "GET /website/logout/ HTTP/1.1" 302 0
+INFO 2024-09-15 12:34:38,319 basehttp "GET /website/ HTTP/1.1" 200 4183
+INFO 2024-09-15 12:36:37,165 basehttp "GET /website/ HTTP/1.1" 200 4183
+INFO 2024-09-15 12:36:38,971 basehttp "GET /website/about/ HTTP/1.1" 200 8821
+INFO 2024-09-15 12:39:50,313 autoreload D:\PycharmProjects\FlowerDeliveryAdvanced\FlowerDelivery\website\telebot\telegram_bot.py changed, reloading.
+INFO 2024-09-15 12:39:52,711 autoreload Watching for file changes with StatReloader

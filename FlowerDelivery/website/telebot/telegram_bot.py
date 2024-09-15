@@ -15,12 +15,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         id=1, defaults={'bot_id': bot_id}
     )
     # Создаем кнопку "Административная"
-    # keyboard = [
-    #     [InlineKeyboardButton("Административная", url="https://miponcelbon.beget.app/home_admin/")]
-    # ]
     keyboard = [
-        [InlineKeyboardButton("Административная", url="127.0.0.1:8000/website/home_admin/")]
+        [InlineKeyboardButton("Административная", url="https://miponcelbon.beget.app/home_admin/")]
     ]
+    # keyboard = [
+    #     [InlineKeyboardButton("Административная", url="127.0.0.1:8000/website/home_admin/")]
+    # ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
         'Cтатусами заказа можно управлять на сайте.\nНажмите на кнопку ниже:',

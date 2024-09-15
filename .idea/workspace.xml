@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f8bf8f5-a389-4c7b-bd6e-55288fd8605b" name="Changes" comment="Commit N4 Новая редакция сайта">
-      <change afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot09a.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlowerDelivery/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot04a.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot04a.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot05.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot06.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot07.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot07.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot08.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot08.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot09.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot09.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/scrinshot14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/scrinshot14.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/order_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/templates/website/order_history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerDelivery/website/telebot/telegram_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerDelivery/website/telebot/telegram_bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726385755269</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit N4 Новая редакция сайта">
+      <option name="closed" value="true" />
+      <created>1726393104390</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726393104390</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
